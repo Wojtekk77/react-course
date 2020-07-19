@@ -10,7 +10,7 @@ class Counter extends React.Component {
   // tak jak ponizej
   handleMathClick = (type, number = 1) => {
     // debugger;
-    if (type === "substraction") {
+    if (type === "subtraction") {
       this.setState((prevState) => ({
         count: ++prevState.count,
         result: prevState.result - number,
@@ -34,15 +34,29 @@ class Counter extends React.Component {
         <MathButton
           name="-10"
           number={10}
-          type="substraction"
+          type="subtraction"
           click={this.handleMathClick}
         />
-        <MathButton />
-        <MathButton />
-        <MathButton />
-        <MathButton />
-        <h1>Liczba kliknięć: {this.state.count}</h1>
-        <h1>Wynik: {this.state.result}</h1>
+        <MathButton
+          name="-1"
+          number={1}
+          type="subtraction"
+          click={this.handleMathClick}
+        />
+        <MathButton name="reset" type="reset" click={this.handleMathClick} />
+        <MathButton
+          name="+1"
+          number={1}
+          type="addition"
+          click={this.handleMathClick}
+        />
+        <MathButton
+          name="+10"
+          number={10}
+          type="addition"
+          click={this.handleMathClick}
+        />
+        <ResultPanel count={this.state.count} result={this.state.result} />
       </>
     );
   }
@@ -56,6 +70,19 @@ const MathButton = (props) => {
     </button>
   );
 };
+
+const ResultPanel = (props) => {
+  return (
+    <React.Fragment>
+      <h1>
+        Liczba kliknięć: {props.count}{" "}
+        {props.count > 10 ? <span>to many counts</span> : null}
+      </h1>
+      <h1>Wynik: {props.result}</h1>
+    </React.Fragment>
+  );
+};
+
 const startValue = 99;
 ReactDOM.render(
   <Counter result={startValue} />,
