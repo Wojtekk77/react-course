@@ -74,10 +74,7 @@ const MathButton = (props) => {
 const ResultPanel = (props) => {
   return (
     <React.Fragment>
-      <h1>
-        Liczba kliknięć: {props.count}{" "}
-        {props.count > 10 ? <span>to many counts</span> : null}
-      </h1>
+      <h1>Liczba kliknięć: {props.count} {props.count > 10 ? <span>to many counts</span> : null}</h1>
       <h1>Wynik: {props.result}</h1>
     </React.Fragment>
   );
