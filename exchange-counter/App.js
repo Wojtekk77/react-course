@@ -1,7 +1,7 @@
 const Cash = (props) => {
   return (
     <div>
-      {props.title}
+      {props.title}:
       {props.cash <= 0 ? "" : (props.cash / props.ratio).toFixed(2)}
     </div>
   );
