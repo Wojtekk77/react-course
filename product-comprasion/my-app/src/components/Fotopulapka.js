@@ -6,7 +6,7 @@ const Fotopulapka = (props) => {
       <div className="col-md-3 col-4">
         <div className="product-grid4">
           <div className="product-image4">
-            <a id={"link-" + props.object_id} href={props.link}>
+            <a id={"link-" + props.id} href={props.link}>
               <img className="pic-1" src={props.foto_src1} />
               <img className="pic-2" src={props.foto_src2} />
             </a>
@@ -20,7 +20,7 @@ const Fotopulapka = (props) => {
               <span>{props.price_before}</span>
             </div>
             <a href="#scroll_here">
-              <button value={props.object_id}>porównaj</button>
+              <button value={props.id}>porównaj</button>
             </a>
           </div>
         </div>
