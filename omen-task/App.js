@@ -12,16 +12,38 @@ class Omen extends React.Component {
     });
   };
 
-  handleAddOmen = () => {
-    this.setState({});
+  handleAddNewOmen = () => {
+    if (this.state.newOmen != "") {
+      const omens = [...this.state.omens];
+      omens.push(this.state.newOmen);
+      this.setState({
+        omens: omens,
+        newOmen: "",
+      });
+      alert("wróżba dodana, aktualnie mamy: " + omens);
+    }
   };
+
+  handleChange = (e) => {
+    this.setState({
+      newOmen: e.target.value,
+    });
+  };
+
   render() {
     return (
       <>
         <button onClick={this.handleClick}>See your omen</button>
         <br />
-        <input value={this.state.newOmen} type="text" />
-        <button onClick={this.handleAddOmen}>add omen</button>
+        <input
+          value={this.state.newOmen}
+          onChange={this.handleChange}
+          type="text"
+        />
+        <button type="submit" onClick={this.handleAddNewOmen}>
+          add omen
+        </button>
+
         {this.state.yourOmen ? <p>{this.state.yourOmen}</p> : null}
       </>
     );

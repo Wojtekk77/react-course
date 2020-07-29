@@ -20,7 +20,19 @@ const Fotopulapka = (props) => {
               <span>{props.price_before}</span>
             </div>
             <a href="#scroll_here">
-              <button value={props.id}>porównaj</button>
+              {props.isCompared ? (
+                <button
+                  className="hideElement"
+                  value={props.id}
+                  onClick={props.click}
+                >
+                  ukryj
+                </button>
+              ) : (
+                <button value={props.id} onClick={props.click}>
+                  porownaj
+                </button>
+              )}
             </a>
           </div>
         </div>
