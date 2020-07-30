@@ -12,9 +12,7 @@ class App extends React.Component {
   };
 
   handleChange = (e) => {
-    var prepareForSorted = this.state.items;
-
-    prepareForSorted = this.state.items.sort((a, b) => {
+    const prepareForSorted = this.state.items.sort((a, b) => {
       switch (e.target.value) {
         case "Nazwa":
           return a.Nazwa > b.Nazwa ? 1 : -1;
@@ -31,6 +29,7 @@ class App extends React.Component {
       items: prepareForSorted,
     });
   };
+
   handleCompareClick = (item) => {
     console.log(item);
     const items = this.state.items.map((x) => {
@@ -50,6 +49,7 @@ class App extends React.Component {
       comapare_items: newArray,
     });
   };
+
   render() {
     const fotopulapki = this.state.items
       .filter((item) => item.Nazwa != "Nazwa")
