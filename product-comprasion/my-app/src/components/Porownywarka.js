@@ -8,8 +8,16 @@ const Porownywarka = (props) => {
           <div className="product-grid4">
             <div className="product-image4">
               <a id={"link-" + props.id} href={props.link}>
-                <img className="pic-1" src={props.foto_src1} />
-                <img className="pic-2" src={props.foto_src2} />
+                <img
+                  className="pic-1"
+                  src={props.foto_src1}
+                  alt={`szczegóły dla ${props.name}`}
+                />
+                <img
+                  className="pic-2"
+                  src={props.foto_src2}
+                  alt={`szczegóły dla ${props.name} rewers fotopułapki`}
+                />
               </a>
             </div>
             <div className="product-content" data-price={props.price}>
@@ -58,7 +66,7 @@ const Porownywarka = (props) => {
               </div>
               <a href="#scroll_here">
                 <button
-                  class="hideElement"
+                  className="hideElement"
                   value={props.id}
                   onClick={props.click}
                 >

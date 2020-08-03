@@ -7,8 +7,12 @@ const Fotopulapka = (props) => {
         <div className="product-grid4">
           <div className="product-image4">
             <a id={"link-" + props.id} href={props.link}>
-              <img className="pic-1" src={props.foto_src1} />
-              <img className="pic-2" src={props.foto_src2} />
+              <img className="pic-1" src={props.foto_src1} alt={props.name} />
+              <img
+                className="pic-2"
+                src={props.foto_src2}
+                alt={`${props.name} rewers fotopułapki`}
+              />
             </a>
           </div>
           <div className="product-content" data-price={props.price}>

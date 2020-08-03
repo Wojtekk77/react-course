@@ -23,6 +23,7 @@ class App extends React.Component {
         case "cena-malejaca":
           return a.cena < b.cena ? 1 : -1;
       }
+      return null;
     });
 
     this.setState({
@@ -52,7 +53,7 @@ class App extends React.Component {
 
   render() {
     const fotopulapki = this.state.items
-      .filter((item) => item.Nazwa != "Nazwa")
+      .filter((item) => item.Nazwa !== "Nazwa")
       .map((item) => (
         <Fotopulapka
           key={item.id}

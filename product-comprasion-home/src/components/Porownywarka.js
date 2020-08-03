@@ -58,7 +58,7 @@ const Porownywarka = (props) => {
               </div>
               <a href="#scroll_here">
                 <button
-                  class="hideElement"
+                  className="hideElement"
                   value={props.id}
                   onClick={props.click}
                 >
