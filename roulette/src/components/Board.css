@@ -1,0 +1,6 @@
+.board {
+  max-width: 156px;
+  display: flexbox;
+  margin-right: auto;
+  margin-left: auto;
+}
