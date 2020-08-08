@@ -8,7 +8,7 @@ const API = "https://randomuser.me/api/?results=5";
 
 class App extends React.Component {
   state = {
-    users: null,
+    users: [],
   };
 
   // componentDidMount() {
@@ -60,14 +60,8 @@ class App extends React.Component {
       })
       .then((response) => response.json())
       .then((data) => {
-        var with_new_user = null;
-        if (this.state.users !== null) {
-          with_new_user = [...this.state.users, data.results[0]];
-        } else {
-          with_new_user = data.results;
-        }
         this.setState({
-          users: with_new_user,
+          users: this.state.users.concat(data.results),
         });
       })
       .catch((error) => console.log(error));
@@ -78,7 +72,7 @@ class App extends React.Component {
       <div>
         <ButtonFetchUsres click={this.handleRadomClick} />
         <ButtonAddUser click={this.handleAddUser} />
-        {users ? <UserList users={users} /> : users}
+        {users.length > 0 ? <UserList users={users} /> : users}
       </div>
     );
   }
