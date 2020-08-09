@@ -1,6 +1,12 @@
 .board {
-  max-width: 156px;
+  max-width: 225px;
   display: flexbox;
   margin-right: auto;
   margin-left: auto;
+
+  /* -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg); */
 }

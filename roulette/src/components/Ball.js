@@ -1,8 +1,8 @@
 import React from "react";
-import Ball from "./Ball";
+import "./Ball.css";
 
 const Ball = () => {
-  return <span></span>;
+  return <div className="ball">X</div>;
 };
 
 export default Ball;

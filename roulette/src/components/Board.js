@@ -2,6 +2,8 @@ import React from "react";
 import FieldOnBoard from "./FieldOnBoard";
 import "./Board.css";
 import ThrowBall from "./ThrowBall";
+import Ball from "./Ball";
+import Bid from "./Bid";
 class Board extends React.Component {
   state = {
     fields: [
@@ -43,20 +45,39 @@ class Board extends React.Component {
       { id: 35, color: "black", isBet: false, ballOnField: false },
       { id: 36, color: "red", isBet: false, ballOnField: false },
     ],
+    bid: 0,
   };
+
+  handleClickField = (id, color, isBet) => {
+    console.log(id + color + isBet);
+    const fields = this.state.fields.map((field) => {
+      if (field.id === id) {
+        console.log(field.id + " " + id);
+        field.isBet = !field.isBet;
+      }
+      field.ballOnField = false;
+      return field;
+    });
+
+    this.setState({
+      fields,
+    });
+  };
+
   handleClickThrowBall = () => {
     const fieldList = this.state.fields;
     const pickedField = fieldList[Math.floor(Math.random() * fieldList.length)];
     console.log(pickedField.color + pickedField.id);
-    const choosenField = this.state.fields.map((field) => {
+    const fields = this.state.fields.map((field) => {
       if (field.id === pickedField.id) {
         field.ballOnField = true;
       } else {
         field.ballOnField = false;
       }
+      return field;
     });
     this.setState({
-      field: choosenField,
+      fields,
     });
   };
   render() {
@@ -65,17 +86,30 @@ class Board extends React.Component {
         key={field.id}
         number={field.id}
         color={field.color}
-        click={this.handleClickField}
+        click={() => this.handleClickField(field.id, field.color, field.isBet)}
         isBet={field.isBet}
         ballOnField={field.ballOnField}
       />
     ));
 
     return (
-      <div className="board">
-        {fields}
-        <ThrowBall click={this.handleClickThrowBall} />
-      </div>
+      <>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <div className="board">{fields}</div>
+            </div>
+            <div class="col-md-4">
+              <ThrowBall
+                classCss="ThrowBall"
+                click={this.handleClickThrowBall}
+              />
+              <Bid />
+            </div>
+          </div>
+        </div>
+      </>
     );
   }
 }
