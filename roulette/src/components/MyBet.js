@@ -1,8 +1,8 @@
 import React from "react";
 import "./MyBet";
 
-const MyBet = () => {
-  return <div className="bet">O</div>;
+const MyBet = (props) => {
+  return <div className="bet">{props.bid}</div>;
 };
 
 export default MyBet;

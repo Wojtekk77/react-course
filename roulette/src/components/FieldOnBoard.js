@@ -4,6 +4,7 @@ import Ball from "./Ball";
 import "./Ball.css";
 import MyBet from "./MyBet";
 import "./MyBet.css";
+import Bid from "./Bid";
 
 const FieldOnBoard = (props) => {
   const myBetOnField = props.isBet ? "posRelative" : null;
@@ -16,7 +17,7 @@ const FieldOnBoard = (props) => {
       >
         {props.number}
         {ballOnField ? <Ball /> : null}
-        {myBetOnField ? <MyBet /> : null}
+        {myBetOnField ? <MyBet bid={props.bid} /> : null}
       </div>
     </>
   );

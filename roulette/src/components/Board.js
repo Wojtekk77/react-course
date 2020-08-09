@@ -47,7 +47,12 @@ class Board extends React.Component {
     ],
     bid: 0,
   };
-
+  handleChangeBid = (e) => {
+    console.log(e.target.value);
+    this.setState({
+      bid: e.target.value,
+    });
+  };
   handleClickField = (id, color, isBet) => {
     console.log(id + color + isBet);
     const fields = this.state.fields.map((field) => {
@@ -89,23 +94,26 @@ class Board extends React.Component {
         click={() => this.handleClickField(field.id, field.color, field.isBet)}
         isBet={field.isBet}
         ballOnField={field.ballOnField}
+        bid={this.state.bid}
       />
     ));
 
     return (
       <>
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-4"></div>
+            <div className="col-md-4">
               <div className="board">{fields}</div>
             </div>
-            <div class="col-md-4">
+            <div className="col-md-4">
               <ThrowBall
                 classCss="ThrowBall"
                 click={this.handleClickThrowBall}
               />
-              <Bid />
+              <div>
+                <Bid onChange={this.handleChangeBid} bid={this.state.bid} />
+              </div>
             </div>
           </div>
         </div>

@@ -1,8 +1,12 @@
 import React from "react";
-import "./ThrowBall";
+import "./ThrowBall.css";
 
 const ThrowBall = (props) => {
-  return <button onClick={props.click}>Throw Ball</button>;
+  return (
+    <button className="throwBallBtn" onClick={props.click}>
+      Throw Ball
+    </button>
+  );
 };
 
 export default ThrowBall;
