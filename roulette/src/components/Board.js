@@ -49,9 +49,13 @@ class Board extends React.Component {
   };
   handleChangeBid = (e) => {
     console.log(e.target.value);
-    this.setState({
-      bid: e.target.value,
-    });
+    if (e.target.value < 0) {
+      return null;
+    } else {
+      this.setState({
+        bid: e.target.value,
+      });
+    }
   };
   handleClickField = (id, color, isBet) => {
     console.log(id + color + isBet);
