@@ -110,14 +110,16 @@ class App extends React.Component {
       correct,
     };
   };
+
   componentDidUpdate() {
     console.log("znikl");
     if (this.state.message !== "") {
       setTimeout(() => {
         this.setState({ message: "" });
-      }, 1000);
+      }, 3000);
     }
   }
+
   render() {
     return (
       <>
@@ -135,6 +137,7 @@ class App extends React.Component {
               <span>{this.messages.username_incorrect}</span>
             )}
           </label>
+          <br />
           <label htmlFor="email">
             your email
             <input
@@ -148,6 +151,7 @@ class App extends React.Component {
               <span>{this.messages.email_incorrect}</span>
             )}
           </label>
+          <br />
           <label htmlFor="password">
             your password
             <input
@@ -161,6 +165,7 @@ class App extends React.Component {
               <span>{this.messages.pswd_incorrect}</span>
             )}
           </label>
+          <br />
           <label htmlFor="accept">
             agreement
             <input
@@ -174,6 +179,7 @@ class App extends React.Component {
               <span>{this.messages.accept_incorrect}</span>
             )}
           </label>
+          <br />
           <button>submit</button>
         </form>
         {this.state.message && <h2>{this.state.message}</h2>}
