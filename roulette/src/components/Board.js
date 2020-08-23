@@ -117,6 +117,7 @@ class Board extends React.Component {
               />
               <div>
                 <Bid onChange={this.handleChangeBid} bid={this.state.bid} />
+                <button onClick={this.handleSimulation }>lets go</button>
               </div>
             </div>
           </div>
