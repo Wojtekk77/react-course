@@ -4,6 +4,7 @@ import "./Board.css";
 import ThrowBall from "./ThrowBall";
 import Ball from "./Ball";
 import Bid from "./Bid";
+import Simulation from "./simulation/Simulation";
 class Board extends React.Component {
   state = {
     fields: [
@@ -46,6 +47,7 @@ class Board extends React.Component {
       { id: 36, color: "red", isBet: false, ballOnField: false },
     ],
     bid: 0,
+    text: "tekst w board",
   };
   handleChangeBid = (e) => {
     console.log(e.target.value);
@@ -76,7 +78,7 @@ class Board extends React.Component {
   handleClickThrowBall = () => {
     const fieldList = this.state.fields;
     const pickedField = fieldList[Math.floor(Math.random() * fieldList.length)];
-    console.log(pickedField.color + pickedField.id);
+    // console.log(pickedField.color + pickedField.id);
     const fields = this.state.fields.map((field) => {
       if (field.id === pickedField.id) {
         field.ballOnField = true;
@@ -88,7 +90,28 @@ class Board extends React.Component {
     this.setState({
       fields,
     });
+    return { color: pickedField.color, number: pickedField.id };
   };
+
+  //color changer
+  handleColorChangeForSimulation = () => {
+    console.log("color in handlecolorsaoijwdaoijdwaoij");
+    return "red";
+  };
+  handleSimulation = (number) => {
+    let i = 0;
+    let field = null;
+    var Interval = setInterval(() => {
+      field = this.handleClickThrowBall();
+      console.log(field.color === this.handleColorChangeForSimulation());
+      i++;
+
+      if (i >= number) {
+        clearInterval(Interval);
+      }
+    }, 100);
+  };
+
   render() {
     const fields = this.state.fields.map((field) => (
       <FieldOnBoard
@@ -106,7 +129,13 @@ class Board extends React.Component {
       <>
         <div className="container-fluid">
           <div className="row">
-            <div className="col-md-4"></div>
+            <div className="col-md-4">
+              <Simulation
+                board={this.state}
+                throwBall={this.handleClickThrowBall}
+                click={this.handleSimulation}
+              />
+            </div>
             <div className="col-md-4">
               <div className="board">{fields}</div>
             </div>
@@ -117,7 +146,6 @@ class Board extends React.Component {
               />
               <div>
                 <Bid onChange={this.handleChangeBid} bid={this.state.bid} />
-                <button onClick={this.handleSimulation }>lets go</button>
               </div>
             </div>
           </div>

@@ -1,0 +1,11 @@
+div {
+  color: white;
+}
+.chooseRed {
+  background-color: red;
+  color: white;
+}
+.chooseBlack {
+  background-color: black;
+  color: white;
+}
